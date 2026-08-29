@@ -35,7 +35,7 @@ int main()
         if ( rot.dir == 'L' )
         {
             printf("novo: %d\n", n);
-            n = (n - rot.clicks) % 100;
+            n = (n + (100 - rot.clicks)) % 100;
             if (n == 0) { cambios++; }
         }
         else
