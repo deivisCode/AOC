@@ -23,8 +23,10 @@ int main()
     char *linha = NULL;
     size_t bufs = 0; /* :FACER: por que 0? (saqueino de stackoverflow...) */
     size_t longo;
-    int cambios = 0;
-    signed int n = 50;
+
+    signed int novo = 50;
+    signed int pases = 0;
+    signed int d_0;
 
     // metres teñamos algunha liña pa ler
     while ( (longo = getline(&linha, &bufs, fstream)) != -1 )
@@ -34,23 +36,30 @@ int main()
 
         if ( rot.dir == 'L' )
         {
-            printf("novo: %d\n", n);
-            n = (n + (100 - rot.clicks)) % 100;
-            if (n == 0) { cambios++; }
+            d_0 =  (novo != 0) * novo + (novo == 0) * 100;
+            printf("N: %d, d_0: %d, pases: %d", novo, d_0, pases);
+            novo = (novo + (100 - (rot.clicks % 100))) % 100;
+            if (rot.clicks >= d_0) {
+                pases = pases + 1 + ((rot.clicks - d_0) / 100);
+            }
         }
-        else
+        else if ( rot.dir == 'R')
         {
-            printf("novo: %d\n", n);
-            n = (n + rot.clicks) % 100;
-            if (n == 0) { cambios++; }
+            d_0 = (100 - novo);
+            printf("N: %d, d_0: %d, pases: %d", novo, d_0, pases);
+            novo = (novo + rot.clicks) % 100;
+            if (rot.clicks >= d_0) {
+                pases = pases + 1 + ((rot.clicks - d_0) / 100);
+            }
         }
+        printf("\n");
 
     }
 
     fclose(fstream);
 
     // RESULTADO
-    printf("cambios: %i", cambios);
+    printf("cambios: %i\n", pases);
 
     if (linha) { free(linha); }
     return 0;
