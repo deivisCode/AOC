@@ -8,6 +8,8 @@ typedef struct ROTACION
     int  clicks;
 } ROT;
 
+size_t getline();
+
 int main()
 {
 
