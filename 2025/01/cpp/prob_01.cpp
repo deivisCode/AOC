@@ -15,7 +15,7 @@ int main() {
     std::string texto;
     rotacion rot;
     signed int novo = 50;
-    signed int pases;
+    signed int pases = 0;
     signed int d_0;
 
     fstream.open(ruta, std::ios::in);
