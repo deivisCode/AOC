@@ -28,23 +28,23 @@ fn main()
             clicks : linha[1..].parse::<i32>().unwrap(),
         };
 
-        if rot.dir == Dir::L
-        {
-            d_0 = if novo != 0 { novo } else { 100 };
-            novo = (novo + (100 - (rot.clicks % 100))) % 100;
-            if (rot.clicks >= d_0)
-            {
-                pases = pases + 1 + ((rot.clicks - d_0) / 100);
+        match rot.dir {
+            Dir::L => {
+                d_0 = if novo != 0 { novo } else { 100 };
+                novo = (novo + (100 - (rot.clicks % 100))) % 100;
+                if (rot.clicks >= d_0)
+                {
+                    pases = pases + 1 + ((rot.clicks - d_0) / 100);
+                }
+            },
+            Dir::R => {
+                d_0 = (100 - novo);
+                novo = (novo + rot.clicks) % 100;
+                if (rot.clicks >= d_0) {
+                    pases = pases + 1 + ((rot.clicks - d_0) / 100);
+                }
             }
         }
-        else if rot.dir == Dir::R
-        {
-            d_0 = (100 - novo);
-            novo = (novo + rot.clicks) % 100;
-            if (rot.clicks >= d_0) {
-                pases = pases + 1 + ((rot.clicks - d_0) / 100);
-            }
-        };
 
     }
 
