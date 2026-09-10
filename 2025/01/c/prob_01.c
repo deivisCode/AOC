@@ -14,7 +14,7 @@ int main()
 {
 
     // Stream ca información do problema
-    FILE* fstream = fopen("input.txt", "r");
+    FILE* fstream = fopen("../input.txt", "r");
     if (fstream == NULL)
     {
         perror("Erro abrindo o ficheiro");

@@ -12,7 +12,7 @@ struct Rotacion {
 
 fn main()
 {
-    let rotacions: String = fs::read_to_string("input.txt")
+    let rotacions: String = fs::read_to_string("../input.txt")
         .expect("Non se puido ler");
 
     let mut novo: i32 = 50;

@@ -10,7 +10,7 @@ struct rotacion {
 
 int main() {
 
-    std::filesystem::path ruta("input.txt");
+    std::filesystem::path ruta("../input.txt");
     std::fstream fstream;
     std::string texto;
     rotacion rot;
